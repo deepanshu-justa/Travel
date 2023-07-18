@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +36,13 @@ Route::controller(AdminController::class)->prefix('admin')->name('admin.')->grou
     Route::post('/login', 'postLogin')->name('login');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
 
+    // Lead Resource Controller
     Route::resource('leads', LeadsController::class);
+
+    //  Reports Controller
+    Route::controller(ReportsController::class)->group(function () {
+        Route::get('/reports', 'index')->name('reports');
+    });
 });
 
-
+Route::get('/leads/json', [ChartsController::class, 'leadsJson'])->name('leads.json');

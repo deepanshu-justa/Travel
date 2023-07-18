@@ -1,7 +1,7 @@
 @extends('layouts.admin.main')
 
 @section('content')
-    <x-admin.title title="Dashboard"></x-admin.title>
+    <x-admin.title title="Leads"></x-admin.title>
 
     <div class="content">
         <div class="card">
